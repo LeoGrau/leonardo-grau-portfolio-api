@@ -9,7 +9,7 @@ LEVEL_TEXT = {
     5: "Master",
 }
 
-CATEGORY_TEXT = {
+SKILL_TYPE_TEXT = {
     1: "Frontend",
     2: "Backend",
     3: "DevOps - Cloud & Deployment",
@@ -19,10 +19,13 @@ CATEGORY_TEXT = {
 }
 
 class SkillSerializer(serializers.Serializer):
-    LEVEL_CHOICES = [(1, "Begginer"), (2, "Intermediate"), (3, "Advanced")]
     name = serializers.CharField()
     level = serializers.SerializerMethodField()
-    code = serializers.IntegerField()
+    code = serializers.CharField()
+    skill_type = serializers.SerializerMethodField()
 
     def get_level(self, obj):
         return LEVEL_TEXT.get(obj.level, "Unknown")
+    
+    def get_skill_type(self, obj):
+        return SKILL_TYPE_TEXT.get(obj.skill_type, "Unknown")

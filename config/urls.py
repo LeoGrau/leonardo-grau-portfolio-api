@@ -17,10 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from config.views.skill_view import SkillView
+from apps.leonardo_cv.views.skills.skill_list_view import SkillListView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("skills/", SkillView.as_view(), name="skills")
+    path("skills/", SkillListView.as_view(), name="skills")
 ]
